@@ -2,32 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+:root{
+    /* Bone */
+    /* background-color: #E1E9E5 */
+    /* Eggshell */
+    /* background-color: #F3F4E5; */
+    /* PaleNimbus */
+    /* background-color: #F1F1F1; */
+    /* Unhinged */
+    /* --mainlight: #E1DFEA;
+
+    background-color: var(--main); */
+}
+.costumeText{
+    color: #ffffff;
+    background: linear-gradient(45deg,#00ffff,#ff00c3);
+    border: none;
+   
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+
+.costumeText:focus {
+    text-decoration: none;
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  
+  .costumeText:hover {
+    text-decoration: none;
+    box-shadow: rgba(0, 0, 0,0.2) 4px 4px 0 0,rgba(0, 0, 0,0.2) 4px 4px 0 1px;
   }
+  
+  .costumeText:active {
+    box-shadow: rgba(0, 0, 0,0.2) 4px 4px 0 0,rgba(0, 0, 0,0.2) 4px 4px 0 1px;
+    outline: 0;
+  }
+  
+  .costumeText:not([disabled]):active {
+    box-shadow: rgba(0, 0, 0,0.2) 4px 4px 0 0,rgba(0, 0, 0,0.2) 4px 4px 0 1px;
+    transform: translate(2px, 2px);
+  }
+  
+ 
+
+
+
+
+
+
+/* linearGradient text color */
+.headTitle{
+    background: linear-gradient(45deg,#00ffff,#ff00c3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+
+.cl-formButtonPrimary{
+  color: #ffffff;
+  background: linear-gradient(45deg,#00ffff,#ff00c3);
+  border: none;
+}
+.cl-internal-b3fm6y{
+  color: #ffffff;
+  background: linear-gradient(45deg,#00ffff,#ff00c3);
+  border: none;
+}
+
+
+
+.sidebarText{
+  color: #E1DFEA;
+}
+
+#logo{
+  background: linear-gradient(45deg,#00ffff,#ff00c3);
+  
 }
