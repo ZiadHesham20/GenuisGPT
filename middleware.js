@@ -1,7 +1,7 @@
 import { authMiddleware } from "@clerk/nextjs";
 
 export default authMiddleware({
-    secretKey: process.env.CLERK_SECRET_KEY,
+    secretKey: 'sk_test_obazPxPqO9QA0wAgGCqztrhX7IDyfvd21kBEhIQLzn',
     publicRoutes:['/'],
 });
 
