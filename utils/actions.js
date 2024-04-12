@@ -24,9 +24,7 @@ export const generateChatResponse = async (chatMessages)=>{
     }
 }
 
-export const getExistingTour = async ({city,country})=>{
-    return null;
-}
+
 export const generateTourResponse = async ({city, country})=>{
 // the query which will be sent to the ai and the response will be in the object form
     const query = `Find a exact ${city} in this exact ${country}.
@@ -64,6 +62,4 @@ If you can't find info on exact ${city}, or ${city} does not exist, or it's popu
         return null;
     }
 }
-export const createNewTour = async ({city, country}) => {
-    return null;
-}
+
