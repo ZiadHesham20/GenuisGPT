@@ -1,6 +1,5 @@
 'use server'
-
-import { PrismaClient } from '@prisma/client';
+import { currentUser } from "@clerk/nextjs"
 import OpenAI from "openai"
 
 const openAi = new OpenAI({
@@ -67,21 +66,4 @@ If you can't find info on exact ${city}, or ${city} does not exist, or it's popu
 }
 export const createNewTour = async ({city, country}) => {
     return null;
-}
-
-
-
-
- 
-const prisma = new PrismaClient();
- 
-export default async function prismaExample() {
-  const newUser = await prisma.user.create({
-    data: {
-      name: 'Elliott',
-      email: 'xelliottx@example-user.com',
-    },
-  });
- 
-  const users = await prisma.user.findMany();
 }
