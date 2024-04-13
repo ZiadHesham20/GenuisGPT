@@ -1,5 +1,6 @@
 'use server'
 import { currentUser } from "@clerk/nextjs"
+import axios from "axios"
 import OpenAI from "openai"
 
 const openAi = new OpenAI({
@@ -61,5 +62,11 @@ If you can't find info on exact ${city}, or ${city} does not exist, or it's popu
         console.log(error);
         return null;
     }
+}
+export const generateTourImage = async ({city,country}) => {
+    const url = `https://api.unsplash.com/search/photos?client_id=${process.env.UNSPLASH_API_KEY}&query=`;
+    const {data} = await axios.get(`${url}${country}-${city}`)
+    return data
+
 }
 
