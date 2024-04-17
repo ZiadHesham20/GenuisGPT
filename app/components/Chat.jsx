@@ -1,6 +1,6 @@
 'use client'
 import { useUser } from "@clerk/nextjs";
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoSend } from "react-icons/io5";
 import {useMutation} from '@tanstack/react-query'
 import { generateChatResponse } from '@/utils/actions';
@@ -14,35 +14,62 @@ export default function Chat() {
 
     //  useQuery is used when fetching data (get methods)
     //  useMutation is used when i want to edit,add,delete any data from server
-    const {mutate,isPending} = useMutation({    
-        mutationFn:(query)=>generateChatResponse([...messages,query]), // here i call the mutation function which i created in the action file (generateChatResponse)
-        onSuccess:(data)=>{
-            if(!data){
-                toast.error('Something went wrong...')
-                return;
-            }
-            setMessages((prev)=>[...prev,data]);
+    // const {mutate,isPending,data} = useMutation({    
+    //     mutationFn:(query)=>generateChatResponse(query), // here i call the mutation function which i created in the action file (generateChatResponse)
+    //     onSuccess:(data)=>{
+    //         // if(data){
+    //         //     console.log(data);
+    //         //     setMessages((prev)=>[...prev,data]);
+    //         // }
+           
+    //         //     return ;
+    //         console.log(messageResponse);
+    //             setMessages((prev)=>[...prev,data]);
+            
+    //     }
+    // })
+
+    const {mutate,isPending} = useMutation({
+        mutationFn: async(query)=>{
+          const response = await generateChatResponse(query)
+          if(response){
+            console.log(response.message[1]);
+            setMessages((prev)=>[...prev,response.message[1]]);
+            return response
+          }
+          toast.error('error occured')
+          return null
         }
-    })
+      })
+
+
+    function getText(e){
+        setText(e.target.value)
+        
+    }
     
     // on submitting my message it will pass the query within it the text that i entered to the mutate function then 
     // it will set the messages with the previous messages and the new message then the value of text will be set empty again
     const handleSubmit = (e) => {
         e.preventDefault();
-        const query = {role: 'user', content:text}
+        const query = {role: 'user', message:text}
         mutate(query)
         setMessages((prev)=>[...prev,query]);
         setText('')
+        
     }
+useEffect(() => {
+  text == ''? document.getElementById('sendButton').classList.add('text-slate-300'):document.getElementById('sendButton').classList.remove('text-slate-300')
+}, [text])
 
 
     return (
         <div className=' min-h-[calc(100vh-6rem)] grid grid-rows-[1fr,auto]'>
-            <div>
-                {messages.map(({role,content},idx)=>{
+            <div className="lg:w-3/4  mx-auto">
+                {messages.map(({role,message},idx)=>{
                     // user message
                     const avatar = role == 'user'?
-                       <div className="avatar items-center">
+                       <div className="lg:ps-16 avatar items-center">
                     <div className="w-10 rounded-full">
                       <img src={user.imageUrl} />
                     </div>
@@ -50,39 +77,40 @@ export default function Chat() {
                   </div>
                   // ai message           
                     :<>
-      <div className="avatar items-center">
+      <div className="avatar lg:ps-16 items-center">
       <SiOpenaigym id='logo'  className='w-10 h-10 rounded-badge text-base-300 p-2' />
                     <p className="ms-3 text-sm">GPTGenius</p>
                   </div>
                     </>;
-                    const bcg = role == 'user'? 'bg-base-200' : 'bg-base-100'
-                    return <div key={idx} className={`${bcg} py-4 -mx-8 px-8 text-xl leading-relaxed border-b border-base-300`}>
+                    const bcg = role == 'user'? 'bg-base-100' : 'bg-base-100'
+                    return <div key={idx} className={`${bcg} py-4 px-8 text-xl leading-relaxed `}>
                         <span className='mr-4'>{avatar}</span>
-                        <p className='max-w-3xl ms-14'>{content}</p>
+                        <p className='max-w-3xl lg:ps-24 text-lg '>{message}</p>
+                       
                     </div>
                 })}
                 {isPending?<>
-                    <div className="avatar items-center py-4">
+                    <div className="avatar ps-24 items-center pt-4">
       <SiOpenaigym id='logo'  className='w-10 h-10 rounded-badge text-base-300 p-2' />
                     <p className="ms-3 text-sm">GPTGenius</p>
                   </div>
-<div className="chat chat-start">
-  <div className="chat-bubble ms-14 bg-base-300"><span className="loading loading-bars loading-sm"></span></div>
+                  <div className="chat chat-start">
+  <div className="chat-bubble ms-32 bg-base-300"><span className="loading loading-bars loading-sm"></span></div>
 </div>
 
                 </>:null}
-
+               
             </div>
-            <form onSubmit={handleSubmit} className='max-w-4xl pt-12'>
+            <form onSubmit={handleSubmit} className='w-full lg:w-3/4 m-auto pt-12'>
                 <div className='join w-full'>
                     <input type='text' 
                     placeholder='Message GeniusGPT' 
-                    className='input input-bordered join-item w-full'
+                    className='input bg-base-200 join-item w-full'
                     value={text}
                     required
-                    onChange={(e) => setText(e.target.value)} />
-                    <button className='btn btn-outline join-item' disabled={isPending}>
-{isPending?'please wait...':<>Send <IoSend /></>}
+                    onChange={getText} />
+                    <button className='btn join-item text-slate-300' id="sendButton" disabled={isPending}>
+{isPending?'Generating...':<>Send <IoSend /></>}
 </button>
                 </div>
             </form>

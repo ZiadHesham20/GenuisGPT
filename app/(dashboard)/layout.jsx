@@ -1,6 +1,8 @@
 import React from 'react'
 import Sidebar from '../components/Sidebar'
-import { CiMenuBurger } from "react-icons/ci";
+
+import Navbar from '../components/Navbar';
+import ExpandToggle from '../components/ExpandToggle';
 
 export default function layout({children}) {
   return (
@@ -9,9 +11,12 @@ export default function layout({children}) {
       {/* Content */}
       <div className='drawer-content'>
         {/* Toggel Button */}
-        <label htmlFor='my-drawer-2' className='drawer-button lg:hidden fixed top-6 right-6'>
-          <CiMenuBurger className='w-8 h-8 text-primary'/>
-        </label>
+        <ExpandToggle/>
+        {/* navbar */}
+        <div className='relative'>
+        <Navbar/>
+        </div>
+
         {/* appeared content */}
         <div className='px-8 py-12 min-h-screen'>
           {children}

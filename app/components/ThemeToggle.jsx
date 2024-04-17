@@ -9,7 +9,7 @@ const themes = {
 }
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState(themes.winter)
+  const [theme, setTheme] = useState(themes.night)
 
   const toggleTheme = ()=>{
     const newTheme = theme == themes.winter? themes.night : themes.winter
