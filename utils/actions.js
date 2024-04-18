@@ -1,29 +1,12 @@
 'use server'
-import { currentUser } from "@clerk/nextjs"
+
 import axios from "axios"
 import OpenAI from "openai"
 
-const openAi = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY
-})
+
 
 export const generateChatResponse = async (chatMessages)=>{
-    // try{
-    //     const response = await openAi.chat.completions.create({
-    //         messages:[
-    //             {role:'system',content:'you are a helpful assistant'},
-    //             ...chatMessages,
-    //         ],
-    //         model: 'whisper-1',
-    //         temperature: 0
-    //     })
-        
-    //     return response.choices[0].message;
-    // }
-    // catch (error){
-        
-    //     return null;
-    // }
+    
     
 const options = {
     method: 'POST',
@@ -99,25 +82,7 @@ const options = {
     return null
   }
 
-    // try {
-    //     const res = await openAi.chat.completions.create({
-    //         messages: [
-    //             {role:'system',content:'you are a tour guide'},
-    //             {role:'user',content: query }
-    //         ],
-    //         model:'gpt-3.5-turbo',
-    //         temperature:0
-    //     })
-    //     const tourData = JSON.parse(res.choices[0].message.content)
-    //     //if the ai could not find the city or country
-    //     if(!tourData.tour){
-    //         return null
-    //     }
-    //     return tourData.tour
-    // } catch (error) {
-    //     console.log(error);
-    //     return null;
-    // }
+ 
 }
 export const generateTourImage = async ({city,country}) => {
     const url = `https://api.unsplash.com/search/photos?client_id=${process.env.UNSPLASH_API_KEY}&query=`;
