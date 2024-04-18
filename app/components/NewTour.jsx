@@ -80,7 +80,9 @@ const [tour, setTour] = useState(null)
     
    
     <div className="carousel gap-5 rounded-box">
-      {getImage.isPending ? <>
+      {getImage.isPending ? window.screen.width > 600 ? <>
+        <div className='carousel-item gap-5'><div className='rounded-xl skeleton shadow-xl mb-16 h-80 w-80 lg:h-96 lg:w-96 object-cover'></div><div className='rounded-xl skeleton shadow-xl mb-16 h-80 w-80 lg:h-96 lg:w-96 object-cover'></div><div className='rounded-xl skeleton shadow-xl mb-16 h-80 w-80 lg:h-96 lg:w-96 object-cover'></div></div>
+      </>:<>
         <div className='carousel-item'><div className='rounded-xl skeleton shadow-xl mb-16 h-80 w-80 lg:h-96 lg:w-96 object-cover'></div></div>
       </>:null}
       
