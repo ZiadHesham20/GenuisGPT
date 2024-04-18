@@ -81,7 +81,7 @@ const [tour, setTour] = useState(null)
    
     <div className="carousel gap-5 rounded-box">
       {getImage.isPending ? <>
-        <div className='carousel-item'><div className='rounded-xl skeleton shadow-xl mb-16 h-96 w-96 object-cover'></div></div><div className='carousel-item'><div className='rounded-xl skeleton shadow-xl mb-16 h-96 w-96 object-cover'></div></div><div className='carousel-item'><div className='rounded-xl skeleton shadow-xl mb-16 h-96 w-96 object-cover'></div></div>
+        <div className='carousel-item'><div className='rounded-xl skeleton shadow-xl mb-16 h-96 w-96 object-cover'></div></div>
       </>:null}
 
     {getImage.data && tour? getImage.data.results.map((elem,idx)=> <div className="carousel-item " key={idx}> <img src={elem.urls.regular} className='rounded-xl shadow-xl mb-16 h-96 w-96 object-cover' alt={elem.alt_description} /></div>):null}

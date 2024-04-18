@@ -30,7 +30,7 @@ export default function ExpandToggle() {
     
     
   return <>
-    <label htmlFor='my-drawer-2' className=' drawer-button sticky top-1/2 left-0 ' >
+    <label htmlFor='my-drawer-2' className=' drawer-button lg:sticky fixed top-1/2 left-0 ' >
         {/* {expand == false ?<MdArrowBackIos onClick={handleExpand}  className='expandIcon ms-1'/>:<MdArrowForwardIos onClick={handleExpand}  className='expandIcon '/>} */}
         <GoDash onClick={handleExpand}  className='expandIcon  rotate-90 text-4xl'/>
         

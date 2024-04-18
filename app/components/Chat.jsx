@@ -90,16 +90,17 @@ useEffect(() => {
                     </div>
                 })}
                 {isPending?<>
-                    <div className="avatar ps-24 items-center pt-4">
+                  <div className="avatar ps-8 lg:ps-24 items-center pt-4">
       <SiOpenaigym id='logo'  className='w-10 h-10 rounded-badge text-base-300 p-2' />
                     <p className="ms-3 text-sm">GPTGenius</p>
                   </div>
                   <div className="chat chat-start">
-  <div className="chat-bubble ms-32 bg-base-300"><span className="loading loading-bars loading-sm"></span></div>
+  <div className="chat-bubble ms-16 lg:ms-32 bg-base-300"><span className="loading loading-bars loading-sm"></span></div>
 </div>
 
                 </>:null}
-               
+                
+
             </div>
             <form onSubmit={handleSubmit} className='w-full lg:w-3/4 m-auto pt-12'>
                 <div className='join w-full'>
