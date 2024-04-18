@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function Navbar() {
   return (
-    <div className='fixed top-5 pe-2  left-0 right-0  flex justify-between lg:z-50'>
+    <div className='fixed top-2 lg:top-5 pe-2  left-0 right-0  flex justify-between lg:z-50'>
       
        <Link href={'/chat'}>
        <div className='flex items-center'>
