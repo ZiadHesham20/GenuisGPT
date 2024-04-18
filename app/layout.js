@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
   return (
     
     <ClerkProvider>
-      <meta name="google-site-verification=oi_TwzJ9mVcOBzGAaXCS-Y6oXhJynx6f_KDKPv_ddGs" content="google" />
+      <meta name="google-site-verification" content="EFHUD0Nq7YnVTyadH3yaeYWIHIdG6FD6YT4HbEePp6A" />
 
       <meta
       key={["Gpt Genuis","Chatgpt","openAi","tours","Tours managment"]}
