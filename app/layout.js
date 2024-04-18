@@ -17,7 +17,6 @@ export default function RootLayout({ children }) {
     <ClerkProvider>
       <meta
       key={["Gpt Genuis","Chatgpt","openAi","tours","Tours managment"]}
-      name="google-site-verification" content="EFHUD0Nq7YnVTyadH3yaeYWIHIdG6FD6YT4HbEePp6A" 
         />
       
       
