@@ -20,9 +20,10 @@ export default function RootLayout({ children }) {
     
     <ClerkProvider>
       <meta name="google-site-verification=oi_TwzJ9mVcOBzGAaXCS-Y6oXhJynx6f_KDKPv_ddGs" content="google" />
+
       <meta
       key={["Gpt Genuis","Chatgpt","openAi","tours","Tours managment"]}
-      />
+        />
       
       
       <html lang="en" data-theme='night' >
