@@ -11,7 +11,7 @@ export const metadata = {
   title: "GPTGenius",
   description: 'GPTGenius: Your AI language companion. Powered by EdenAI, it enhances your conversations, content creation, and magnage your Tours , and more!',
   verification:{
-    google: 'google'
+    google: 'EFHUD0Nq7YnVTyadH3yaeYWIHIdG6FD6YT4HbEePp6A'
   }
 };
 
@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
   return (
     
     <ClerkProvider>
-      <meta name="google-site-verification" content="EFHUD0Nq7YnVTyadH3yaeYWIHIdG6FD6YT4HbEePp6A" />
+      
 
       <meta
       key={["Gpt Genuis","Chatgpt","openAi","tours","Tours managment"]}
