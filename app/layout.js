@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Providers from "./providers";
+import { Analytics } from "@vercel/analytics/react"
 
 
 
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
       <html lang="en" data-theme='night' >
       <body className={inter.className}><Providers>
       {children}
+      <Analytics />
         </Providers></body>
     </html>
     </ClerkProvider>
